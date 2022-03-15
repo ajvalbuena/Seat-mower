@@ -17,6 +17,7 @@ public class App {
             input[i] = in.nextLine();
         }
 
+        System.out.println("Result:");
         System.out.println(TerrainInspection.inspectWithMower(input[0], input[1], input[2]));
         System.out.println(TerrainInspection.inspectWithMower(input[0], input[3], input[4]));
     }
