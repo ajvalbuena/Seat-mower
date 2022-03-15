@@ -12,6 +12,7 @@ public class TerrainInspection {
     final static int UPPER_X_LIMIT = 100;
     final static int UPPER_Y_LIMIT = 100;
 
+
     public static String inspectWithMower(String plateauLimits, String initialMower, String instructionsInput) {
         try {
             if (Strings.isNullOrEmpty(initialMower)) return new Mower(new Point(0, 0), CardinalPoint.N).convertToString();
