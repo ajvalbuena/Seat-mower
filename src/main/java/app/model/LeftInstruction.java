@@ -1,19 +1,17 @@
 package app.model;
 
-public class LeftInstruction implements Instruction {
+import java.util.HashMap;
+import java.util.Map;
 
-    @Override
-    public Mower applyInstruction(Mower mower) {
-        CardinalPoint mowerCardinal = mower.getCardinalPoint();
+public class LeftInstruction extends Instruction {
 
-        if (mowerCardinal.equals(CardinalPoint.N)) {
-            return new Mower(mower.getPoint(), CardinalPoint.W);
-        } else if (mowerCardinal.equals(CardinalPoint.S)) {
-            return new Mower(mower.getPoint(), CardinalPoint.E);
-        } else if (mowerCardinal.equals(CardinalPoint.E)) {
-            return new Mower(mower.getPoint(), CardinalPoint.N);
-        } else {
-            return new Mower(mower.getPoint(), CardinalPoint.S);
-        }
+
+    public LeftInstruction() {
+        super(new HashMap<>() {{
+            put(CardinalPoint.N, new DirectionMovement(CardinalPoint.W));
+            put(CardinalPoint.S, new DirectionMovement(CardinalPoint.E));
+            put(CardinalPoint.E, new DirectionMovement(CardinalPoint.N));
+            put(CardinalPoint.W, new DirectionMovement(CardinalPoint.S));
+        }});
     }
 }

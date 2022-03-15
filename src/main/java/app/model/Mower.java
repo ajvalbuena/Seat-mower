@@ -15,17 +15,11 @@ public class Mower {
     }
 
 
-    public Mower move(List<String> instructions) {
+    public Mower move(List<Instruction> instructions) {
         var movingMower = this;
 
-        for (String instruction : instructions) {
-            if (instruction.equals("M")) {
-                movingMower = new MoveInstruction().applyInstruction(movingMower);
-            } else if (instruction.equals("R")) {
-                movingMower = new RightInstruction().applyInstruction(movingMower);
-            } else {
-                movingMower = new LeftInstruction().applyInstruction(movingMower);
-            }
+        for (Instruction instruction : instructions) {
+            movingMower =  instruction.applyInstruction(movingMower);
 
         }
         return movingMower;

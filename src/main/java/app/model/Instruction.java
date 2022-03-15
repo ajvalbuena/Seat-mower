@@ -1,6 +1,16 @@
 package app.model;
 
-public interface Instruction {
+import java.util.Map;
 
-    Mower applyInstruction(Mower mower);
+public abstract class Instruction {
+
+    private Map<CardinalPoint, Movement> cardinalPointMovementMap;
+
+    public Instruction(Map<CardinalPoint, Movement> cardinalPointMovementMap) {
+        this.cardinalPointMovementMap = cardinalPointMovementMap;
+    }
+
+    public  Mower applyInstruction(Mower mower){
+        return cardinalPointMovementMap.get(mower.getCardinalPoint()).applyVector(mower);
+    }
 }
