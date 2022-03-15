@@ -18,3 +18,7 @@ application {
 tasks.named('test') {
     useTestNG()
 }
+
+run {
+    standardInput = System.in
+}
