@@ -15,12 +15,12 @@ public class Mower {
     }
 
 
-    public Mower move(List<Instruction> instructions) throws Exception {
+    public Mower move(List<Instruction> instructions, Point plateauUpperLimits) throws Exception {
         var movingMower = this;
 
         for (Instruction instruction : instructions) {
             try {
-                movingMower = instruction.applyInstruction(movingMower);
+                movingMower = instruction.applyInstruction(movingMower, plateauUpperLimits);
             } catch (Exception e) {
                 throw e;
             }

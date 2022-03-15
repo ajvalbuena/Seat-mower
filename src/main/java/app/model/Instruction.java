@@ -10,9 +10,9 @@ public abstract class Instruction {
         this.cardinalPointMovementMap = cardinalPointMovementMap;
     }
 
-    public Mower applyInstruction(Mower mower) throws Exception {
+    public Mower applyInstruction(Mower mower, Point plateauUpperLimits) throws Exception {
         try {
-            return cardinalPointMovementMap.get(mower.getCardinalPoint()).applyVector(mower);
+            return cardinalPointMovementMap.get(mower.getCardinalPoint()).applyVector(mower, plateauUpperLimits);
         } catch (Exception e) {
             throw e;
         }

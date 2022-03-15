@@ -16,7 +16,7 @@ public class TerrainInspection {
 
             if (Strings.isNullOrEmpty(instructionsInput)) return myMower.convertToString();
 
-            return myMower.move(createListOfInstructionsFromCommands(instructionsInput)).convertToString();
+            return myMower.move(createListOfInstructionsFromCommands(instructionsInput), new Point(100,100)).convertToString();
         }catch (Exception e){
             return e.getMessage();
         }

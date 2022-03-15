@@ -9,7 +9,7 @@ public class DirectionMovement implements Movement{
     }
 
     @Override
-    public Mower applyVector(Mower mower) {
+    public Mower applyVector(Mower mower, Point plateauUpperLimits) {
         return new Mower(mower.getPoint(), cardinalPoint);
     }
 }
