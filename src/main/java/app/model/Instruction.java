@@ -10,7 +10,11 @@ public abstract class Instruction {
         this.cardinalPointMovementMap = cardinalPointMovementMap;
     }
 
-    public  Mower applyInstruction(Mower mower){
-        return cardinalPointMovementMap.get(mower.getCardinalPoint()).applyVector(mower);
+    public Mower applyInstruction(Mower mower) throws Exception {
+        try {
+            return cardinalPointMovementMap.get(mower.getCardinalPoint()).applyVector(mower);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }

@@ -2,5 +2,5 @@ package app.model;
 
 public interface Movement {
 
-    Mower applyVector (Mower mower);
+    Mower applyVector (Mower mower) throws Exception;
 }

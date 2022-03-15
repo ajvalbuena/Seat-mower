@@ -15,12 +15,15 @@ public class Mower {
     }
 
 
-    public Mower move(List<Instruction> instructions) {
+    public Mower move(List<Instruction> instructions) throws Exception {
         var movingMower = this;
 
         for (Instruction instruction : instructions) {
-            movingMower = instruction.applyInstruction(movingMower);
-
+            try {
+                movingMower = instruction.applyInstruction(movingMower);
+            } catch (Exception e) {
+                throw e;
+            }
         }
         return movingMower;
     }

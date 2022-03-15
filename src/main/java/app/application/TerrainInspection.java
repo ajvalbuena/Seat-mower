@@ -9,13 +9,17 @@ import java.util.stream.Collectors;
 
 public class TerrainInspection {
     public static String inspectWithMower(String initialMower, String instructionsInput) {
-        if (Strings.isNullOrEmpty(initialMower)) return new Mower(new Point(0, 0), CardinalPoint.N).convertToString();
+        try {
+            if (Strings.isNullOrEmpty(initialMower)) return new Mower(new Point(0, 0), CardinalPoint.N).convertToString();
 
-        Mower myMower = createInitialMower(initialMower);
+            Mower myMower = createInitialMower(initialMower);
 
-        if (Strings.isNullOrEmpty(instructionsInput)) return myMower.convertToString();
+            if (Strings.isNullOrEmpty(instructionsInput)) return myMower.convertToString();
 
-        return myMower.move(createListOfInstructionsFromCommands(instructionsInput)).convertToString();
+            return myMower.move(createListOfInstructionsFromCommands(instructionsInput)).convertToString();
+        }catch (Exception e){
+            return e.getMessage();
+        }
     }
 
     private static Mower createInitialMower(String initialMower) {

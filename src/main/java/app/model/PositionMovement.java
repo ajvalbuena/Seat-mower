@@ -11,8 +11,22 @@ public class PositionMovement implements Movement {
     }
 
     @Override
-    public Mower applyVector(Mower mower) {
-        Point positionAfterMovement = new Point(x + mower.getPoint().getX(), y + mower.getPoint().getY());
-        return new Mower(positionAfterMovement, mower.getCardinalPoint());
+    public Mower applyVector(Mower mower) throws Exception {
+        int newX = this.x + mower.getPoint().getX();
+        int newY = this.y + mower.getPoint().getY();
+        try {
+            Point positionAfterMovement = new Point(applyLimitsPlateau(newX), applyLimitsPlateau(newY));
+            return new Mower(positionAfterMovement, mower.getCardinalPoint());
+        } catch (Exception e) {
+            throw e;
+
+        }
     }
+
+    private int applyLimitsPlateau(int point) throws Exception {
+        if (point < 0) throw new Exception("Mower is out of the plateau");
+        return point;
+    }
+
+
 }
