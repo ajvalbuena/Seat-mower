@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Mower {
 
     private Point point;
+
     private CardinalPoint cardinalPoint;
 
     public Mower(Point point, CardinalPoint cardinalPoint) {
@@ -15,47 +16,19 @@ public class Mower {
 
 
     public Mower move(List<String> instructions) {
-        int x = this.point.getX();
-        int y = this.point.getY();
-        CardinalPoint cardinal = this.cardinalPoint;
+        var movingMower = this;
 
         for (String instruction : instructions) {
-            if (cardinal.equals(CardinalPoint.N)) {
-                if (instruction.equals("M")) {
-                    y += 1;
-                } else if (instruction.equals("R")) {
-                    cardinal = CardinalPoint.E;
-                } else if (instruction.equals("L")) {
-                    cardinal = CardinalPoint.W;
-                }
-            }else if (cardinal.equals(CardinalPoint.S)) {
-                if (instruction.equals("M")) {
-                    y -= 1;
-                } else if (instruction.equals("R")) {
-                    cardinal = CardinalPoint.W;
-                } else if (instruction.equals("L")) {
-                    cardinal = CardinalPoint.E;
-                }
-            }else if (cardinal.equals(CardinalPoint.W)) {
-                if (instruction.equals("M")) {
-                    x -= 1;
-                } else if (instruction.equals("R")) {
-                    cardinal = CardinalPoint.N;
-                } else if (instruction.equals("L")) {
-                    cardinal = CardinalPoint.S;
-                }
-            }else {
-                if (instruction.equals("M")) {
-                    x += 1;
-                } else if (instruction.equals("R")) {
-                    cardinal = CardinalPoint.S;
-                } else if (instruction.equals("L")) {
-                    cardinal = CardinalPoint.N;
-                }
+            if (instruction.equals("M")) {
+                movingMower = new MoveInstruction().applyInstruction(movingMower);
+            } else if (instruction.equals("R")) {
+                movingMower = new RightInstruction().applyInstruction(movingMower);
+            } else {
+                movingMower = new LeftInstruction().applyInstruction(movingMower);
             }
 
         }
-        return new Mower(new Point(x, y), cardinal);
+        return movingMower;
     }
 
     @Override
@@ -69,5 +42,13 @@ public class Mower {
     @Override
     public int hashCode() {
         return Objects.hash(point, cardinalPoint);
+    }
+
+    public Point getPoint() {
+        return point;
+    }
+
+    public CardinalPoint getCardinalPoint() {
+        return cardinalPoint;
     }
 }
