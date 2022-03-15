@@ -1,5 +1,7 @@
 package app.model;
 
+import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 public class Mower {
@@ -13,8 +15,21 @@ public class Mower {
     }
 
 
-    public Mower move() {
-        return new Mower(new Point(0,1), CardinalPoint.N);
+    public Mower move(List<String> instructions) {
+        int x = this.point.getX();
+        int y = this.point.getY();
+        CardinalPoint cardinal = this.cardinalPoint;
+
+        for (String instruction : instructions) {
+            if (instruction.equals("M")) {
+                y = +1;
+            } else if (instruction.equals("R")) {
+                cardinal = CardinalPoint.E;
+            } else if(instruction.equals("L")){
+                cardinal =CardinalPoint.W;
+            }
+        }
+        return new Mower(new Point(x, y), cardinal);
     }
 
     @Override
