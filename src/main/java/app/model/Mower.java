@@ -19,10 +19,18 @@ public class Mower {
         var movingMower = this;
 
         for (Instruction instruction : instructions) {
-            movingMower =  instruction.applyInstruction(movingMower);
+            movingMower = instruction.applyInstruction(movingMower);
 
         }
         return movingMower;
+    }
+
+    public String convertToString() {
+        String x = String.valueOf(point.getX());
+        String y = String.valueOf(point.getY());
+        String cardinal = cardinalPoint.name();
+
+        return x + " " + y + " " + cardinal;
     }
 
     @Override

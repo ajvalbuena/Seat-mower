@@ -1,11 +1,23 @@
 package app;
 
+import app.application.TerrainInspection;
+
+import java.util.Scanner;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Enter the initial mower: ");
+        String mover = in.nextLine();
+
+        System.out.println("Enter the instructions: ");
+        String instructions = in.nextLine();
+
+        System.out.println(TerrainInspection.inspectWithMower(mover,instructions));
     }
+
+
 }
