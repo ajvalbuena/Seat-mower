@@ -16,7 +16,7 @@ public class App {
         System.out.println("Enter the instructions: ");
         String instructions = in.nextLine();
 
-        System.out.println(TerrainInspection.inspectWithMower(mover,instructions));
+        System.out.println(TerrainInspection.inspectWithMower("", mover, instructions));
     }
 
 
